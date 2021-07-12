@@ -32,11 +32,11 @@ defmodule Shopify.Enumerable do
             fun
           )
 
-        {:error, %Error{} = error} ->
-          raise error
+        {:error, %Shopify.Response{}} ->
+          {:done, []}
 
-        {:error, %Shopify.Response{} = error} ->
-          IO.inspect(error.data)
+        {:error, %Error{}} ->
+          {:done, []}
       end
     end
 
