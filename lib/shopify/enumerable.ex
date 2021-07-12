@@ -34,6 +34,9 @@ defmodule Shopify.Enumerable do
 
         {:error, %Error{} = error} ->
           raise error
+
+        {:error, %Shopify.Response{} = error} ->
+          IO.inspect(error.data)
       end
     end
 
