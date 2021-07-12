@@ -24,6 +24,8 @@ defmodule Shopify.Enumerable do
     end
 
     def reduce(%Shopify.Enumerable{data: []} = enum, {:cont, acc}, fun) do
+      Process.sleep(1500)
+
       case enum.middleware.(fn -> enum.func.(enum.session, enum.params) end) do
         {:ok, %Response{data: data} = resp} ->
           reduce(
